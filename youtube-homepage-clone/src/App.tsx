@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import { CategoryPills } from "./component";
-import { categories } from "./data";
+import { CategoryPills, VideoGridItems } from "./component";
+import { categories, videos } from "./data";
 import { PageHeader } from "./pages";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="main-container max-h-screen flex flex-col">
       <PageHeader />
-      <div className="grid grid-cols-[auto, 1fr] flex-grow-1 overflow-auto">
+      <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto">
         <div>sidebar</div>
         <div className="overflow-x-hidden px-8 pb-4">
           <div className="sticky top-0 bg-white z-10 pb-4">
@@ -18,6 +18,11 @@ function App() {
               onSelect={setSelectedCategory}
               categories={categories}
             />
+          </div>
+          <div className="grid gap-4 grid-cols-[repeat(auto-fill,minmax(300px,1fr))]">
+            {videos.map((eachVideo) => (
+              <VideoGridItems key={eachVideo.id} {...eachVideo} />
+            ))}
           </div>
         </div>
       </div>

@@ -1,1 +1,1 @@
-export { categories } from "./home";
+export * from "./home";
